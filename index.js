@@ -3,6 +3,7 @@ const app = express();
 
 app.use(express.json())
 
+//rotas
 app.get("/", function (req, res) {
     const result = {mensagem: 'Testando atualizacao'}
     res.json(result);
@@ -23,11 +24,14 @@ app.get("/sobre" , function (req, res) {
     res.json({mensagem: `a visao da empresa é ${visao}`, missao, objetivo})
 })
 
-app.get('/:SistemaDeInformacao', function (req, res) {
-    const curso = req.params.curso
+app.get('/:curso', function (req, res) {
+    const dados1 = req.body
+    const curso = dados1.curso
     res.json({mensagem: `meu curso ${curso}`})
 })
 
+
+//exemplo de uma arrow function "  () => {}   "
 
 app.get("/blog" , function (req, res) {
     res.json({mensagem: `a visao é ${visao}`, missao, objetivo})
@@ -39,6 +43,8 @@ app.get("/ola/:nome/:cargo/:cor", function (req, res){
     " A cor que você escolheu foi: " + req.params.cor);
 })
 
+
+//indica a porta que o servidor vai conectar
 app.listen(8081, function(){
     console.log('Servidor Rodando na url http://localhost:8081');
 });
